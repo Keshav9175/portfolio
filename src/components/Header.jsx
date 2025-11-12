@@ -1,16 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { HiMenu } from "react-icons/hi";
+import logo from "../assets/logo.svg";
 
 export default function Header() {
   return (
-    <header className="p-4 bg-gray-900 flex justify-between items-center">
-      <h1 className="text-xl font-bold text-cyan-400">Keshav Divate</h1>
-      <nav className="space-x-4">
-        <Link to="/" className="hover:text-cyan-400">Home</Link>
-        <Link to="/about" className="hover:text-cyan-400">About</Link>
-        <Link to="/projects" className="hover:text-cyan-400">Projects</Link>
-        <Link to="/contact" className="hover:text-cyan-400">Contact</Link>
-      </nav>
+    <header className="h-[16vh] px-[50px] py-[40px] bg-[#FAF4EC] flex justify-between items-center">
+      {/* Left: Logo */}
+      <img
+        src={logo}
+        alt="Keshav Divate Logo"
+        className="h-8 object-contain"
+      />
+
+      {/* Right: Menu Button */}
+      <button className="flex items-center gap-2 bg-black text-white px-6 py-2 rounded-[50px] hover:bg-gray-800 transition">
+        <HiMenu className="text-2xl" />
+        <span className="text-base font-normal uppercase ">Menu</span>
+      </button>
     </header>
-  )
+  );
 }
