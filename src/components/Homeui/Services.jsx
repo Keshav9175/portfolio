@@ -2,19 +2,19 @@ import React from "react";
 
 export default function Services() {
   return (
-    <section className="relative bg-[#FAF4EC] px-[50px] py-20 text-black flex flex-col gap-10 justify-center text-center">
+    <section className="relative bg-[#FAF4EC] px-[50px] py-10 md:py-20 text-black flex flex-col gap-5 md:gap-10 justify-center text-center">
       {/* Section Heading */}
       <h3
-        className="text-[22px] font-normal tracking-wide"
+        className="text-[16px] md:text-[22px] font-normal tracking-wide"
       >
         WHAT HE DOES
       </h3>
 
       {/* Container for the text lines */}
-      <div className="relative flex flex-col items-center justify-center gap-6">
+      <div className="relative flex flex-col items-center justify-center gap-4 md:gap-6">
         {/* Row 1 */}
         <div
-          className="relative text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
+          className="relative text-[24px] md:text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
           style={{ fontFamily: "TWKEverett" }}
         >
           UI UX DESIGN
@@ -23,7 +23,7 @@ export default function Services() {
 
         {/* Row 2 */}
         <div
-          className="relative text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
+          className="relative text-[24px] md:text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
           style={{ fontFamily: "TWKEverett" }}
         >
           WEB DEVELOPMENT
@@ -32,7 +32,7 @@ export default function Services() {
 
         {/* Row 3 */}
         <div
-          className="relative text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
+          className="relative text-[24px] md:text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
           style={{ fontFamily: "TWKEverett" }}
         >
           LOGO DESIGN
@@ -41,7 +41,7 @@ export default function Services() {
 
         {/* Row 4 */}
         <div
-          className="relative text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
+          className="relative text-[24px] md:text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
           style={{ fontFamily: "TWKEverett" }}
         >
           GRAPHIC DESIGN
@@ -50,7 +50,7 @@ export default function Services() {
 
         {/* Row 5 */}
         <div
-          className="relative text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
+          className="relative text-[24px] md:text-[clamp(48px,6vw,90px)] italic font-extrabold leading-tight"
           style={{ fontFamily: "TWKEverett" }}
         >
           VIDEO EDITING

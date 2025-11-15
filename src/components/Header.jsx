@@ -4,12 +4,12 @@ import logo from "../assets/logo.svg";
 
 export default function Header() {
   return (
-    <header className="h-[16vh] px-[50px] py-[40px] bg-[#FAF4EC] flex justify-between items-center">
+    <header className="px-[16px] py-[30px] md:h-[16vh] md:px-[50px] md:py-[40px] 2xl:px-[100px] bg-[#FAF4EC] flex justify-between items-center">
       {/* Left: Logo */}
       <img
         src={logo}
         alt="Keshav Divate Logo"
-        className="h-8 object-contain"
+        className="md:h-8 h-6 object-contain"
       />
 
       {/* Right: Menu Button */}
