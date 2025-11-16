@@ -16,13 +16,13 @@
   font-display: swap;
 }
 
-@font-face {
+/* @font-face {
   font-family: "TWKEverett";
   src: url("./assets/fonts/TWKEverett-SemiBold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 @font-face {
   font-family: "TWKEverett";

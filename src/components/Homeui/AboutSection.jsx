@@ -27,7 +27,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className="w-full bg-[#FBF6F1] py-12 md:py-20 lg:py-28">
+    <section className="w-full bg-[#FAF4EC] py-12 md:py-20 lg:py-28">
       <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-24 text-center">
         {/* Small label */}
         <div className="mb-6">
