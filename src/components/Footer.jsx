@@ -11,7 +11,7 @@ const Footer = () => {
 
       {/* Top Row: Logo + Nav + Button */}
       <div className="
-        max-w-[1600px] 
+        max-w-[100%] 
         mx-auto 
         flex justify-between items-center 
         px-[16px]
@@ -19,7 +19,7 @@ const Footer = () => {
         2xl:px-[100px]
       ">
         <div className="flex items-center justify-start gap-20">
-        {/* Logo */}
+          {/* Logo */}
           <img src={logo} alt="logo" className="w-50" />
 
           {/* Center Navigation */}
@@ -76,13 +76,13 @@ const Footer = () => {
       {/* Bottom Row: Social Icons Left, Credits Right */}
       <div
         className="
-          max-w-[1600px] 
+          max-w-[100%] 
           mx-auto 
           flex justify-between items-center 
           mt-6 
           px-[16px]
           md:px-[50px]
-          xl:px-[100px]
+          2xl:px-[100px]
         "
       >
         {/* Social icons */}
