@@ -1,84 +1,65 @@
-// src/components/AboutSection.jsx
 import React from "react";
 
-import FigmaIcon from "../../assets/icons/Figma.svg";
-import AiIcon from "../../assets/icons/illustrator.svg";
-import PsIcon from "../../assets/icons/photoshop.svg";
-import NodeIcon from "../../assets/icons/node.svg";
-import ReactIcon from "../../assets/icons/react.svg";
-import TSIcon from "../../assets/icons/ts.svg";
-import JSIcon from "../../assets/icons/js.svg";
-import TailwindIcon from "../../assets/icons/tailwind.svg";
-import NotionIcon from "../../assets/icons/notion.svg";
-import WebflowIcon from "../../assets/icons/webflow.svg";
+// Import icons
+import FigmaSVG from "../../assets/icons/Figma.svg";
+import IllustratorSVG from "../../assets/icons/illustrator.svg";
+import PhotoshopSVG from "../../assets/icons/photoshop.svg";
+import NodeSVG from "../../assets/icons/node.svg";
+import ReactSVG from "../../assets/icons/react.svg";
+import TsSVG from "../../assets/icons/ts.svg";
+import JsSVG from "../../assets/icons/js.svg";
+import TailwindSVG from "../../assets/icons/tailwind.svg";
+import NotionSVG from "../../assets/icons/notion.svg";
+import WebflowSVG from "../../assets/icons/webflow.svg";
 
-export default function AboutSection() {
-  const logos = [
-    { src: FigmaIcon, alt: "Figma" },
-    { src: AiIcon, alt: "Adobe Illustrator" },
-    { src: PsIcon, alt: "Adobe Photoshop" },
-    { src: NodeIcon, alt: "Node.js" },
-    { src: ReactIcon, alt: "React" },
-    { src: TSIcon, alt: "TypeScript" },
-    { src: JSIcon, alt: "JavaScript" },
-    { src: TailwindIcon, alt: "Tailwind CSS" },
-    { src: NotionIcon, alt: "Notion" },
-    { src: WebflowIcon, alt: "Webflow" },
-  ];
-
+export default function SkillsAndAbout() {
   return (
-    <section className="w-full bg-[#FAF4EC] py-12 md:py-20 lg:py-28">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-8 lg:px-24 text-center">
-        {/* Small label */}
-        <div className="mb-6">
-          <span className="text-sm md:text-base tracking-wide font-medium text-black/90">ABOUT ME</span>
-        </div>
+    <div className="w-full bg-[#FAF4EC]">
+      <div className="w-full flex flex-col items-center px-[50px] py-[80px]">
 
-        {/* Big headline */}
-        <div className="mx-auto max-w-[1200px]">
-        <p
-            className="
-            font-extrabold text-black 
-            tracking-tight text-center
-            "
-            style={{
-            fontSize: "48px",
-            lineHeight: "76px",
-            }}
-        >
-            KESHAV DIVATE IS A PASSIONATE UI/UX DESIGNER AND DEVELOPER WHO BLENDS
-            CREATIVITY WITH TECHNOLOGY, CRAFTING INTUITIVE, ENGAGING, AND
-            USER-CENTERED DIGITAL EXPERIENCES THROUGH DESIGN AND CODE.
+        {/* ABOUT HEADING */}
+        <p className="text-[20px] uppercase text-black font-medium font-[TWKEverett]">
+          About me
         </p>
-        </div>
 
+        {/* MAIN TEXT — full width, 76px line-height */}
+        <p
+          className="
+            w-full text-center mt-[60px]
+            text-[48px] uppercase
+            text-[rgba(0,0,0,0.6)]
+            font-[TWKEverett]
+          "
+          style={{ lineHeight: "76px" }}
+        >
+          <span className="text-black font-extrabold font-[TWKEverett]">
+            Keshav Divate is a passionate UI/
+          </span>
+          UX designer and developer who blends creativity with technology,
+          crafting intuitive, engaging, and user-centered digital experiences
+          through design and code.
+        </p>
 
-        {/* Logos row */}
-        <div className="mt-10 md:mt-12">
-          <div
-            className="
-              flex items-center justify-center gap-6 md:gap-8 flex-wrap
-              px-4 md:px-12 lg:px-24
-            "
-          >
-            {logos.map((logo, idx) => (
-              <div
-                key={idx}
-                className="flex items-center justify-center"
-                aria-hidden={false}
-              >
-                {/* SVGs scale responsively; adjust w/h for breakpoints */}
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
-                  style={{ objectFit: "contain", display: "block" }}
-                />
-              </div>
-            ))}
-          </div>
+        {/* TECH ICONS */}
+        <div
+          className="
+            mt-[60px]
+            w-full flex flex-wrap gap-[40px]
+            justify-center items-center
+          "
+        >
+          <img src={FigmaSVG} alt="Figma" className="w-[60px] h-[80px]" />
+          <img src={IllustratorSVG} alt="Illustrator" className="w-[80px] h-[80px]" />
+          <img src={PhotoshopSVG} alt="Photoshop" className="w-[80px] h-[80px]" />
+          <img src={NodeSVG} alt="NodeJS" className="w-[80px] h-[80px]" />
+          <img src={ReactSVG} alt="React" className="w-[80px] h-[80px]" />
+          <img src={TsSVG} alt="TypeScript" className="w-[80px] h-[80px]" />
+          <img src={JsSVG} alt="JavaScript" className="w-[80px] h-[80px]" />
+          <img src={TailwindSVG} alt="Tailwind" className="w-[100px] h-[60px]" />
+          <img src={NotionSVG} alt="Notion" className="w-[80px] h-[80px]" />
+          <img src={WebflowSVG} alt="Webflow" className="w-[80px] h-[80px]" />
         </div>
       </div>
-    </section>
+    </div>
   );
 }

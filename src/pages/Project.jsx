@@ -1,9 +1,36 @@
-import React from 'react'
+import React from "react";
+import ProjectSection from "../components/Projects/ProjectSection";
+import Clients from "../components/Clients";
 
-const Project = () => {
+export default function Project() {
   return (
-    <div>Project</div>
-  )
-}
+    <>
+      {/* Hide scrollbars for this page only */}
+      <style>
+        {`
+          /* Hide scrollbar for Chrome, Safari, Edge */
+          .page-no-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
 
-export default Project
+          /* Hide scrollbar for Firefox */
+          .page-no-scrollbar {
+            scrollbar-width: none;
+          }
+
+          /* Prevent default scrollbar space */
+          .page-no-scrollbar {
+            -ms-overflow-style: none;
+            overflow-x: hidden;
+          }
+        `}
+      </style>
+
+      {/* Apply scrollbar hiding */}
+      <div className="page-no-scrollbar w-full h-full overflow-hidden">
+        <ProjectSection />
+        <Clients />
+      </div>
+    </>
+  );
+}

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import svgPaths from "../pages/svg-7gqcb2ot8r";
-import { ImageWithFallback } from "./ImageWithFallback";
-import avatar from "../assets/avatar.png";
-import aboutVideo from "../assets/aboutvideo.mp4";
+import svgPaths from "../../pages/svg-7gqcb2ot8r";
+import { ImageWithFallback } from "../ImageWithFallback";
+import avatar from "../../assets/avatar.png";
+import aboutVideo from "../../assets/aboutvideo.mp4";
 
 // Mocking missing assets for now (kept to match your original structure)
 const imgFrame36 = null;
@@ -31,88 +31,12 @@ export default function AboutPage() {
     return (
         <div
             className="bg-[#faf4ec] box-border content-stretch flex flex-col items-center pb-[2px] pt-0 px-0 relative size-full"
-            data-name="About"
-        >
-            {/* Frame7 (big About hero area) */}
-            <div className="h-[694px] mb-[-2px] flex justify-center relative shrink-0 w-[100%]">
-                <div className="box-border content-stretch flex flex-col gap-[60px] h-[694px] items-center justify-center overflow-clip pb-[40px] pt-[20px] relative rounded-[inherit] w-[1440px]">
-                    <div className="font-['TWKEverett'] font-black leading-[160px] not-italic relative shrink-0 text-[172.979px] text-[rgba(0,0,0,0.8)] text-center text-nowrap uppercase whitespace-pre">
-                        <p className="mb-0">{`ABOUT `}</p>
-                        <p>{`KES    HAV`}</p>
-                    </div>
+            data-name="About">
 
-                    <div
-                        className="absolute flex items-center justify-center"
-                        style={{
-                            height:
-                                "calc(1px*((var(--transform-inner-width)*0.030041342601180077)+(var(--transform-inner-height)*0.999548614025116)))",
-                            left: "631px",
-                            top: "335px",
-                            width:
-                                "calc(1px*((var(--transform-inner-height)*0.030041342601180077)+(var(--transform-inner-width)*0.999548614025116)))",
-                            ["--transform-inner-width"]: "144",
-                            ["--transform-inner-height"]: "168",
-                        }}
-                    >
-                        <div className="flex-none rotate-[1.721deg]">
-                            {/* avatar image (previously Frame30) */}
-                            <div className="h-[168px] relative rounded-[18px] w-[144px]">
-                                <ImageWithFallback
-                                    alt=""
-                                    className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none rounded-[18px] size-full"
-                                    src={avatar}
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* small pill elements positioned over hero */}
-                    <div className="absolute bg-white box-border content-stretch flex gap-[10px] items-center justify-center left-[100px] px-[20px] py-[10px] rounded-[100px] top-[448px]">
-                        <div
-                            aria-hidden="true"
-                            className="absolute border border-black border-solid inset-0 pointer-events-none rounded-[100px] shadow-[-6px_6px_0px_0px_#f84600]"
-                        />
-                        <p className="font-['TWKEverett'] font-medium leading-[normal] not-italic relative shrink-0 text-[20px] text-nowrap text-black uppercase whitespace-pre">
-                            Think Visually.
-                        </p>
-                    </div>
-
-                    <div className="absolute bg-white box-border content-stretch flex gap-[10px] items-center justify-center left-[1110px] px-[20px] py-[10px] rounded-[100px] top-[421px]">
-                        <div
-                            aria-hidden="true"
-                            className="absolute border border-black border-solid inset-0 pointer-events-none rounded-[100px] shadow-[-6px_6px_0px_0px_#fedc29]"
-                        />
-                        <p className="font-['TWKEverett'] font-medium leading-[normal] not-italic relative shrink-0 text-[20px] text-nowrap text-black uppercase whitespace-pre">
-                            Think Visually.
-                        </p>
-                    </div>
-
-                    <div className="absolute bg-white box-border content-stretch flex gap-[10px] items-center justify-center left-[254px] px-[20px] py-[10px] rounded-[100px] top-[139px]">
-                        <div
-                            aria-hidden="true"
-                            className="absolute border border-black border-solid inset-0 pointer-events-none rounded-[100px] shadow-[-6px_6px_0px_0px_#7a25f9]"
-                        />
-                        <p className="font-['TWKEverett'] font-medium leading-[normal] not-italic relative shrink-0 text-[20px] text-nowrap text-black uppercase whitespace-pre">
-                            Think Visually.
-                        </p>
-                    </div>
-
-                    <div className="absolute bg-white box-border content-stretch flex gap-[10px] items-center justify-center left-[925px] px-[20px] py-[10px] rounded-[100px] top-[161px]">
-                        <div
-                            aria-hidden="true"
-                            className="absolute border border-black border-solid inset-0 pointer-events-none rounded-[100px] shadow-[-6px_6px_0px_0px_#01c7fe]"
-                        />
-                        <p className="font-['TWKEverett'] font-medium leading-[normal] not-italic relative shrink-0 text-[20px] text-nowrap text-black uppercase whitespace-pre">
-                            Your app deserves better clothes.
-                        </p>
-                    </div>
-                </div>
-
-                <div
-                    aria-hidden="true"
-                    className="absolute border-[0px_0px_1px] border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none"
-                />
-            </div>
+            <div
+                aria-hidden="true"
+                className="absolute border-[1px_0px_0px_0px] border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none"
+            />
 
             {/* Main about content (Frame) */}
             <div className="mb-[-2px] relative shrink-0 w-full px-[16px] md:px-[50px] 2xl:px-[100px]">

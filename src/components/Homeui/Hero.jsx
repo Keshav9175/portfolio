@@ -50,13 +50,14 @@ export default function Hero() {
           absolute 
           right-6 
           2xl:right-[100px]
-          bottom-6 
+          bottom-6
+          text-[#32312F] 
           text-[11vw] lg:text-[180px] 
           leading-[0.85] font-black text-[#2b2a29]
         "
       >
         <div>BUILDING</div>
-        <div>IDEAS</div>
+        <div className="text-right">IDEAS</div>
       </div>
 
       {/* Bottom-center name pill (kbd svg) */}

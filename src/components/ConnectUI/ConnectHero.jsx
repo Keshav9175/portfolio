@@ -91,7 +91,7 @@ export default function ConnectHero() {
                 />
             </div>
             <div className="box-border flex flex-col gap-[60px] h-[400px] md:h-[694px] items-center justify-center md:overflow-clip overflow-visible pb-[40px] pt-[20px] px-[20px] relative rounded-[inherit] w-full">
-                <div className="font-[TWKEverett,sans-serif] font-black leading-[60px] md:leading-[160px] not-italic relative shrink-0 text-[66px] md:text-[172.979px] text-[rgba(0,0,0,0.55)] text-center whitespace-nowrap uppercase">
+                <div className="font-[TWKEverett,sans-serif] font-black leading-[60px] md:leading-[160px] not-italic relative shrink-0 text-[66px] md:text-[172.979px]  text-[#32312F] text-center whitespace-nowrap uppercase">
                     <p className="mb-0">Work</p>
                     <p className="mb-0">with</p>
                     <p>me</p>
