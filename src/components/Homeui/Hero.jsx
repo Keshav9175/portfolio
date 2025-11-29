@@ -3,11 +3,27 @@ import avatar from "../../assets/avatar.png";
 import kbd from "../../assets/kbd.svg";     // name pill svg
 import cloth from "../../assets/cloth.svg"; // blue pill svg
 import think from "../../assets/think.svg"; // purple pill svg
+import ImageTrail from "../../components/Animation/ImageTrail";
 
 export default function Hero() {
   return (
     <section className="relative w-full h-[30vh] md:h-[84vh] bg-[#FAF4EC] overflow-hidden">
-      {/* Large headline */}
+      <div className="absolute h-full w-full" style={{ overflow: 'hidden' }}>
+        <ImageTrail
+          items={[
+            'https://picsum.photos/id/287/300/300',
+            'https://picsum.photos/id/1001/300/300',
+            'https://picsum.photos/id/1025/300/300',
+            'https://picsum.photos/id/1026/300/300',
+            'https://picsum.photos/id/1027/300/300',
+            'https://picsum.photos/id/1028/300/300',
+            'https://picsum.photos/id/1029/300/300',
+            'https://picsum.photos/id/1030/300/300',
+            // ...
+          ]}
+          variant={1}
+        />
+      </div>
       <div className="px-8 lg:px-6 2xl:px-[100px]">
         <div className="text-[11vw] lg:text-[180px] leading-[0.8] font-black text-[#2b2a29]">
           <div>CRAFTING</div>

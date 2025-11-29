@@ -16,7 +16,9 @@ export default function Home() {
       <AboutSection />
       <ScrollablePosterGallery />
       <ProjectShowcase />
-      <FallingText />
+      <div className="relative mt-[74px]">
+        <FallingText />
+      </div>
       <Testimonial />
     </section>
   )
