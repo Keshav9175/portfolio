@@ -6,17 +6,19 @@ import ScrollablePosterGallery from '../components/Homeui/ScrollablePosterGaller
 import ProjectShowcase from '../components/Homeui/ProjectShowcase'
 import FallingText from '../components/Homeui/FallingText'
 import Testimonial from '../components/Homeui/Testimonial'
+import HeroTwo from '../components/Homeui/HeroTwo'
 
 export default function Home() {
   return (
     <section className="min-h-screen bg-[#FAF4EC] text-black">
       {/* render the Hero UI component */}
-      <Hero />
+      {/* <Hero /> */}
+      <HeroTwo />
       <Services />
       <AboutSection />
       <ScrollablePosterGallery />
       <ProjectShowcase />
-      <div className="relative mt-[74px]">
+      <div className="relative mt-[90px]">
         <FallingText />
       </div>
       <Testimonial />

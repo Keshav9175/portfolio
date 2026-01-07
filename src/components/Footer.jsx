@@ -4,6 +4,8 @@ import logo from "../assets/logo.svg";
 // Temporary social icons (replace with your SVGs later)
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
+import { FiArrowUpRight } from "react-icons/fi";
+
 
 const Footer = () => {
   return (
@@ -32,19 +34,25 @@ const Footer = () => {
         </div>
 
         {/* Work With Me Button */}
-        <button className="
-          hidden md:flex 
-          items-center gap-2 
-          bg-[#FF5C23] 
-          text-white 
-          px-6 py-3 
-          rounded-xl 
-          font-semibold 
-          text-[15px]
-        ">
-          WORK WITH ME
-          <span className="bg-white text-black rounded-md pt-1 pb-1 pr-2 pl-2 text-sm">↗</span>
+        <button
+          className="
+            hidden md:flex
+            items-center gap-3
+            bg-[#ff4820]
+            px-6 py-4
+            rounded-2xl
+            text-white
+            uppercase
+            font-bold
+            shrink-0
+          "
+        >
+          Work With Me
+          <div className="bg-white p-2 rounded-lg flex items-center justify-center">
+            <FiArrowUpRight size={24} className="text-black" />
+          </div>
         </button>
+
 
       </div>
 

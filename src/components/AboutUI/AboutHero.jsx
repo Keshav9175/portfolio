@@ -1,29 +1,46 @@
 // AboutHero.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase"; // your existing firebase.js
 import { ImageWithFallback } from "../ImageWithFallback";
-import avatar from "../../assets/avatar.png"; // same style/path as your AboutPage
+import avatar from "../../assets/avatar.png";
 import ImageTrail from "../Animation/ImageTrail";
 
 const AboutHero = () => {
+    const [trailImages, setTrailImages] = useState([]);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const ref = doc(db, "hover", "yV6SoqJ1rSjcn8Vh0GeV");
+                const snap = await getDoc(ref);
+
+                if (snap.exists()) {
+                    const data = snap.data();
+                    if (Array.isArray(data?.images)) {
+                        setTrailImages(data.images.slice(0, 19));
+                    }
+                }
+            } catch (err) {
+                console.error("Firestore image fetch error:", err);
+            }
+        };
+
+        fetchImages();
+    }, []);
+
     return (
         <div className=" bg-[#faf4ec] h-[694px] mb-[-2px] flex justify-center relative shrink-0 w-full">
             <div className="box-border content-stretch flex flex-col gap-[60px] h-[694px] items-center justify-center overflow-clip pb-[40px] pt-[20px] relative rounded-[inherit] w-[1440px]">
 
+                {/* IMAGE TRAIL (ONLY THIS IS DYNAMIC) */}
                 <div className="absolute h-full w-full" style={{ overflow: 'hidden' }}>
-                    <ImageTrail
-                        items={[
-                            'https://picsum.photos/id/287/1440/694',
-                            'https://picsum.photos/id/1001/300/300',
-                            'https://picsum.photos/id/1025/300/300',
-                            'https://picsum.photos/id/1026/300/300',
-                            'https://picsum.photos/id/1027/300/300',
-                            'https://picsum.photos/id/1028/300/300',
-                            'https://picsum.photos/id/1029/300/300',
-                            'https://picsum.photos/id/1030/300/300',
-                            // ...
-                        ]}
-                        variant={1}
-                    />
+                    {trailImages.length > 0 && (
+                        <ImageTrail
+                            items={trailImages}
+                            variant={1}
+                        />
+                    )}
                 </div>
 
                 {/* HEADING */}
@@ -88,6 +105,7 @@ const AboutHero = () => {
                         Your app deserves better clothes.
                     </p>
                 </div>
+
             </div>
         </div>
     );

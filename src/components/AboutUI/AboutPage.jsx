@@ -3,9 +3,27 @@ import svgPaths from "../../pages/svg-7gqcb2ot8r";
 import { ImageWithFallback } from "../ImageWithFallback";
 import avatar from "../../assets/avatar.png";
 import aboutVideo from "../../assets/aboutvideo.mp4";
+import {
+    SiFigma,
+    SiAdobephotoshop,
+    SiAdobeillustrator,
+    SiSketch,
+    SiHtml5,
+    SiCss3,
+    SiJavascript,
+    SiReact,
+    SiTailwindcss,
+    SiAdobeaftereffects,
+    SiAdobepremierepro,
+    SiWordpress,
+    SiJira,
+    SiNotion,
+} from "react-icons/si";
+
+
 
 // Mocking missing assets for now (kept to match your original structure)
-const imgFrame36 = null;
+const imgFrame56 = null;
 const imgSubtract = null;
 const imgLogo21 = null;
 const imgFreepikUpsacaleImage87202RemovebgPreviewCopyPng1 = null;
@@ -13,6 +31,15 @@ const imgFrame21 = null;
 const imgFrame22 = null;
 const imgFrame23 = null;
 const imgGroup = null;
+
+function ToolLogo({ children }) {
+    return (
+        <div className="size-[56px] flex items-center justify-center">
+            {children}
+        </div>
+    );
+}
+
 
 export default function AboutPage() {
     const [playing, setPlaying] = useState(true);
@@ -57,133 +84,56 @@ export default function AboutPage() {
 
                         {/* three cards area (Frame46) */}
                         <div className="content-stretch flex gap-[40px] items-start relative shrink-0 w-full">
-                            {/* card 1 */}
-                            <div className="basis-0 bg-[#dfb5ff] grow min-h-px min-w-px relative rounded-[40px] shrink-0">
-                                <div className="overflow-clip rounded-[inherit] size-full">
-                                    <div className="box-border content-stretch flex flex-col gap-[40px] items-start p-[40px] relative w-full">
-                                        <p className="font-['TWKEverett'] font-medium leading-[normal] not-italic relative shrink-0 text-[20px] text-black text-nowrap uppercase whitespace-pre">
-                                            About me
-                                        </p>
-                                        <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-                                            {/* icons row */}
-                                            <div className="h-[56px] relative shrink-0 w-[42px]">
-                                                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 42 56">
-                                                    <g clipPath="url(#clip0_1_320)" id="Figma">
-                                                        <path clipRule="evenodd" d={svgPaths.p1402a180} fill="var(--fill-0, #1ABCFE)" fillRule="evenodd" id="Vector" />
-                                                        <path clipRule="evenodd" d={svgPaths.p4d0a680} fill="var(--fill-0, white)" fillRule="evenodd" id="Vector_2" />
-                                                        <path clipRule="evenodd" d={svgPaths.p188ded00} fill="var(--fill-0, #FF7262)" fillRule="evenodd" id="Vector_3" />
-                                                        <path clipRule="evenodd" d={svgPaths.pfb48380} fill="var(--fill-0, #F24E1E)" fillRule="evenodd" id="Vector_4" />
-                                                        <path clipRule="evenodd" d={svgPaths.p49a6200} fill="var(--fill-0, #A259FF)" fillRule="evenodd" id="Vector_5" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_1_320">
-                                                            <rect fill="white" height="56" width="42" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </div>
 
-                                            <div className="h-[56px] relative shrink-0 w-[57px]">
-                                                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 57 56">
-                                                    <g clipPath="url(#clip0_1_316)" id="illustrator">
-                                                        <path d={svgPaths.p29489100} fill="var(--fill-0, #330000)" id="Vector" />
-                                                        <path d={svgPaths.p370d6700} fill="var(--fill-0, #FF9A00)" id="Vector_2" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_1_316">
-                                                            <rect fill="white" height="56" width="57" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </div>
+                            {/* CARD 1 – DESIGN TOOLS */}
+                            <div className="basis-0 bg-[#dfb5ff] grow rounded-[40px]">
+                                <div className="p-[40px] flex flex-col gap-[40px]">
+                                    <p className="text-black font-['TWKEverett'] text-[20px] uppercase">Design tools</p>
 
-                                            <div className="relative shrink-0 size-[56px]">
-                                                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 56 56">
-                                                    <g clipPath="url(#clip0_1_308)" id="photoshop">
-                                                        <path d={svgPaths.pbbd4700} fill="var(--fill-0, #001E36)" id="Vector" />
-                                                        <path d={svgPaths.pecc7000} fill="var(--fill-0, #31A8FF)" id="Vector_2" />
-                                                        <path d={svgPaths.p10cf1780} fill="var(--fill-0, #31A8FF)" id="Vector_3" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_1_308">
-                                                            <rect fill="white" height="56" width="56" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </div>
-
-                                            <div className="h-[56px] overflow-clip relative shrink-0 w-[57px]">
-                                                <div className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px] mask-size-[57px_56px]" style={{ maskImage: `url('${imgGroup}')` }}>
-                                                    <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 57 56">
-                                                        <g id="Group">
-                                                            <path d={svgPaths.p3b8e9480} fill="var(--fill-0, #3A48FF)" id="Vector" />
-                                                            <path d={svgPaths.p12dba880} fill="var(--fill-0, white)" id="Vector_2" />
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-
-                                            <div className="relative shrink-0 size-[56px]">
-                                                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 56 56">
-                                                    <g id="notion">
-                                                        <path clipRule="evenodd" d={svgPaths.p2c2fb600} fill="var(--fill-0, black)" fillRule="evenodd" id="Vector" />
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                        </div>
+                                    <div className="flex items-center justify-between w-full text-black">
+                                        <ToolLogo><SiFigma size={56} /></ToolLogo>
+                                        <ToolLogo><SiAdobeillustrator size={56} className="text-orange-500" /></ToolLogo>
+                                        <ToolLogo><SiAdobephotoshop size={56} className="text-blue-500" /></ToolLogo>
+                                        <ToolLogo><SiSketch size={56} className="text-yellow-500" /></ToolLogo>
+                                        <ToolLogo><SiNotion size={56} /></ToolLogo>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* card 2 (green) */}
-                            <div className="basis-0 bg-[#33c791] grow min-h-px min-w-px relative rounded-[40px] shrink-0">
-                                <div className="overflow-clip rounded-[inherit] size-full">
-                                    <div className="box-border content-stretch flex flex-col gap-[40px] items-start p-[40px] relative w-full">
-                                        <p className="font-['TWKEverett'] font-medium leading-[normal] not-italic relative shrink-0 text-[20px] text-black text-nowrap uppercase whitespace-pre">
-                                            About me
-                                        </p>
-                                        {/* duplicated icon row for symmetry */}
-                                        <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-                                            {/* icons omitted for brevity — same as above */}
-                                            <div className="h-[56px] relative shrink-0 w-[42px]">
-                                                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 42 56">
-                                                    <g clipPath="url(#clip0_1_320)" id="Figma">
-                                                        <path clipRule="evenodd" d={svgPaths.p1402a180} fill="var(--fill-0, #1ABCFE)" fillRule="evenodd" id="Vector" />
-                                                        <path clipRule="evenodd" d={svgPaths.p4d0a680} fill="var(--fill-0, white)" fillRule="evenodd" id="Vector_2" />
-                                                        <path clipRule="evenodd" d={svgPaths.p188ded00} fill="var(--fill-0, #FF7262)" fillRule="evenodd" id="Vector_3" />
-                                                        <path clipRule="evenodd" d={svgPaths.pfb48380} fill="var(--fill-0, #F24E1E)" fillRule="evenodd" id="Vector_4" />
-                                                        <path clipRule="evenodd" d={svgPaths.p49a6200} fill="var(--fill-0, #A259FF)" fillRule="evenodd" id="Vector_5" />
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                            {/* rest icons would follow... */}
-                                        </div>
+                            {/* CARD 2 – SKILLS */}
+                            <div className="basis-0 bg-[#33c791] grow rounded-[40px]">
+                                <div className="p-[40px] flex flex-col gap-[40px]">
+                                    <p className="text-black font-['TWKEverett'] text-[20px] uppercase">Skills</p>
+
+                                    <div className="flex items-center justify-between w-full text-black">
+                                        <ToolLogo><SiHtml5 size={56} className="text-orange-600" /></ToolLogo>
+                                        <ToolLogo><SiCss3 size={56} className="text-blue-600" /></ToolLogo>
+                                        <ToolLogo><SiJavascript size={56} className="text-yellow-400" /></ToolLogo>
+                                        <ToolLogo><SiReact size={56} className="text-cyan-400" /></ToolLogo>
+                                        <ToolLogo><SiTailwindcss size={56} className="text-sky-400" /></ToolLogo>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* card 3 (blue) */}
-                            <div className="basis-0 bg-[#0d8dff] grow min-h-px min-w-px relative rounded-[40px] shrink-0">
-                                <div className="overflow-clip rounded-[inherit] size-full">
-                                    <div className="box-border content-stretch flex flex-col gap-[40px] items-start p-[40px] relative w-full">
-                                        <p className="font-['TWKEverett'] font-medium leading-[normal] not-italic relative shrink-0 text-[20px] text-black text-nowrap uppercase whitespace-pre">
-                                            About me
-                                        </p>
-                                        <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-                                            {/* icons repeated */}
-                                            <div className="h-[56px] relative shrink-0 w-[42px]">
-                                                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 42 56">
-                                                    <g clipPath="url(#clip0_1_320)" id="Figma">
-                                                        <path clipRule="evenodd" d={svgPaths.p1402a180} fill="var(--fill-0, #1ABCFE)" fillRule="evenodd" id="Vector" />
-                                                        <path clipRule="evenodd" d={svgPaths.p4d0a680} fill="var(--fill-0, white)" fillRule="evenodd" id="Vector_2" />
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                        </div>
+                            {/* CARD 3 – OTHER TOOLS */}
+                            <div className="basis-0 bg-[#0d8dff] grow rounded-[40px]">
+                                <div className="p-[40px] flex flex-col gap-[40px]">
+                                    <p className="text-black font-['TWKEverett'] text-[20px] uppercase">
+                                        Other
+                                    </p>
+
+                                    <div className="flex items-center justify-between w-full text-black">
+                                        <ToolLogo><SiAdobeaftereffects size={56} className="text-purple-300" /></ToolLogo>
+                                        <ToolLogo><SiAdobepremierepro size={56} className="text-indigo-300" /></ToolLogo>
+                                        <ToolLogo><SiWordpress size={56} /></ToolLogo>
+                                        <ToolLogo><SiJira size={56} /></ToolLogo>
+                                        <ToolLogo><SiNotion size={56} /></ToolLogo>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
 
                     </div>
                 </div>

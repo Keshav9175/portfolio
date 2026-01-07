@@ -7,167 +7,165 @@ import { db } from "../../firebase";
 import ImageWithFallback from "../ImageWithFallback";
 
 export default function ProjectSection() {
-    // ---------------- CONFIG ----------------
+    /* ---------------- CONFIG ---------------- */
     const MULTIPLIER = 2.5;
     const QUICKTO_DURATION = 0.8;
     const QUICKTO_EASE = "power3.out";
     const REVERSE_DIRECTION = true;
     const END_THRESHOLD = 10;
 
-    // ---------------- STATE ----------------
+    /* ---------------- STATE ---------------- */
     const [projects, setProjects] = useState([]);
+    const [isSectionActive, setIsSectionActive] = useState(false);
+    const [isAtHorizontalEnd, setIsAtHorizontalEnd] = useState(false);
 
-    // ---------------- REFS ----------------
+    /* ---------------- REFS ---------------- */
     const rowRef = useRef(null);
     const sectionRef = useRef(null);
     const touchStartRef = useRef(null);
 
-    const scrollTargetRef = useRef(0);
-    const proxyRef = useRef({ x: 0 });
-    const quickToRef = useRef(null);
+    const scrollTarget = useRef(0);
+    const proxy = useRef({ x: 0 });
+    const quickTo = useRef(null);
+
+    const rafId = useRef(null);
+    const atEndRef = useRef(false);
     const autoScrolledRef = useRef(false);
 
-    const [isSectionActive, setIsSectionActive] = useState(false);
-    const [isAtHorizontalEnd, setIsAtHorizontalEnd] = useState(false);
-
-    // ---------------- FETCH PROJECTS ----------------
+    /* ---------------- FETCH PROJECTS ---------------- */
     useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const q = query(collection(db, "projects"), orderBy("order", "asc"));
-                const snap = await getDocs(q);
-
-                const data = snap.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-
-                setProjects(data);
-            } catch (err) {
-                console.error("Failed to fetch projects:", err);
-            }
-        };
-
-        fetchProjects();
+        (async () => {
+            const q = query(collection(db, "projects"), orderBy("order", "asc"));
+            const snap = await getDocs(q);
+            setProjects(
+                snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+            );
+        })();
     }, []);
 
-    // ---------------- GSAP SETUP ----------------
+    /* ---------------- GSAP SETUP ---------------- */
     useEffect(() => {
-        if (!rowRef.current) return;
+        const el = rowRef.current;
+        if (!el) return;
 
-        scrollTargetRef.current = rowRef.current.scrollLeft;
-        proxyRef.current.x = rowRef.current.scrollLeft;
+        scrollTarget.current = el.scrollLeft;
+        proxy.current.x = el.scrollLeft;
 
-        quickToRef.current = gsap.quickTo(proxyRef.current, "x", {
+        quickTo.current = gsap.quickTo(proxy.current, "x", {
             duration: QUICKTO_DURATION,
             ease: QUICKTO_EASE,
             onUpdate: () => {
-                if (rowRef.current) {
-                    rowRef.current.scrollLeft = proxyRef.current.x;
-                }
+                el.scrollLeft = proxy.current.x;
             },
         });
 
-        return () => {
-            gsap.killTweensOf(proxyRef.current);
-            quickToRef.current = null;
-        };
+        return () => gsap.killTweensOf(proxy.current);
     }, []);
 
-    // ---------------- INTERSECTION OBSERVER ----------------
+    /* ---------------- INTERSECTION OBSERVER ---------------- */
     useEffect(() => {
         const node = sectionRef.current;
         if (!node) return;
 
         const io = new IntersectionObserver(
-            ([entry]) => {
-                setIsSectionActive(entry.isIntersecting && entry.intersectionRatio > 0.35);
-            },
-            { threshold: [0, 0.15, 0.35, 0.6] }
+            ([e]) => setIsSectionActive(e.isIntersecting && e.intersectionRatio > 0.35),
+            { threshold: [0, 0.35, 0.6] }
         );
 
         io.observe(node);
         return () => io.disconnect();
     }, []);
 
-    // ---------------- SCROLL END MONITOR ----------------
+    /* ---------------- SCROLL END CHECK (OPTIMIZED) ---------------- */
     useEffect(() => {
         const el = rowRef.current;
         if (!el) return;
 
-        const onScroll = () => {
+        const checkEnd = () => {
+            // If empty, we are NOT at the "end" in the sense of needing to auto-exit
+            if (projects.length === 0) {
+                if (atEndRef.current) {
+                    atEndRef.current = false;
+                    setIsAtHorizontalEnd(false);
+                }
+                return;
+            }
+
             const max = el.scrollWidth - el.clientWidth;
-            setIsAtHorizontalEnd(el.scrollLeft >= Math.max(0, max - END_THRESHOLD));
+            const atEnd = el.scrollLeft >= max - END_THRESHOLD;
+
+            if (atEnd !== atEndRef.current) {
+                atEndRef.current = atEnd;
+                setIsAtHorizontalEnd(atEnd);
+            }
         };
 
-        el.addEventListener("scroll", onScroll, { passive: true });
-        onScroll();
+        el.addEventListener("scroll", checkEnd, { passive: true });
+        checkEnd();
 
-        return () => el.removeEventListener("scroll", onScroll);
-    }, []);
+        return () => el.removeEventListener("scroll", checkEnd);
+    }, [projects]);
 
-    // ---------------- BODY LOCK ----------------
+    /* ---------------- BODY LOCK ---------------- */
     useEffect(() => {
-        const shouldLock = isSectionActive && !isAtHorizontalEnd;
+        const lock = isSectionActive && !isAtHorizontalEnd;
+        const setLock = (shouldLock) => {
+            document.documentElement.style.overflow = shouldLock ? "hidden" : "";
+            document.body.style.overflow = shouldLock ? "hidden" : "";
+        };
 
-        document.body.style.overflow = shouldLock ? "hidden" : "";
-        document.documentElement.style.overflow = shouldLock ? "hidden" : "";
+        setLock(lock);
+
+        return () => {
+            // Always unlock on cleanup/unmount
+            setLock(false);
+        };
     }, [isSectionActive, isAtHorizontalEnd]);
 
-    // ---------------- AUTO EXIT ----------------
+    /* ---------------- AUTO EXIT ---------------- */
     useEffect(() => {
         if (!isAtHorizontalEnd || autoScrolledRef.current) return;
 
-        setTimeout(() => {
+        // Prevent auto-scroll if projects aren't loaded or content fits
+        if (projects.length === 0) return;
+        const el = rowRef.current;
+        if (el && el.scrollWidth <= el.clientWidth) return;
+
+        autoScrolledRef.current = true;
+        requestAnimationFrame(() => {
             const sec = sectionRef.current;
             if (!sec) return;
-
             window.scrollTo({
                 top: sec.offsetTop + sec.offsetHeight,
                 behavior: "smooth",
             });
+        });
+    }, [isAtHorizontalEnd, projects]);
 
-            autoScrolledRef.current = true;
-        }, 80);
-    }, [isAtHorizontalEnd]);
-
+    /* ---------------- UTILS ---------------- */
     const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
-    // ---------------- SCROLL UPDATE ----------------
-    const updateScrollTarget = (delta) => {
+    const updateScroll = (delta) => {
         const el = rowRef.current;
-        if (!el || !quickToRef.current) return;
+        if (!el || !quickTo.current) return;
 
-        const maxScroll = el.scrollWidth - el.clientWidth;
-        scrollTargetRef.current = clamp(
-            scrollTargetRef.current + delta,
-            0,
-            maxScroll
-        );
-
-        quickToRef.current(scrollTargetRef.current);
+        const max = el.scrollWidth - el.clientWidth;
+        scrollTarget.current = clamp(scrollTarget.current + delta, 0, max);
+        quickTo.current(scrollTarget.current);
     };
 
-    // ---------------- WHEEL ----------------
+    /* ---------------- WHEEL (RAF BATCHED) ---------------- */
     const handleWheel = (e) => {
         if (!isSectionActive) return;
 
-        const el = rowRef.current;
-        if (!el) return;
-
-        const max = el.scrollWidth - el.clientWidth;
-        const atLeft = scrollTargetRef.current <= 0;
-        const atRight = scrollTargetRef.current >= max;
-
         const delta = e.deltaY * MULTIPLIER * (REVERSE_DIRECTION ? 1 : -1);
+        e.preventDefault();
 
-        if ((delta > 0 && !atRight) || (delta < 0 && !atLeft)) {
-            e.preventDefault();
-            updateScrollTarget(delta);
-        }
+        if (rafId.current) cancelAnimationFrame(rafId.current);
+        rafId.current = requestAnimationFrame(() => updateScroll(delta));
     };
 
-    // ---------------- TOUCH ----------------
+    /* ---------------- TOUCH ---------------- */
     const handleTouchStart = (e) => {
         const t = e.touches[0];
         touchStartRef.current = { x: t.clientX, y: t.clientY };
@@ -181,13 +179,13 @@ export default function ProjectSection() {
         const dx = t.clientX - touchStartRef.current.x;
 
         if (Math.abs(dy) > Math.abs(dx)) {
-            updateScrollTarget(dy * MULTIPLIER * (REVERSE_DIRECTION ? -1 : 1));
+            updateScroll(dy * MULTIPLIER * (REVERSE_DIRECTION ? -1 : 1));
             touchStartRef.current = { x: t.clientX, y: t.clientY };
             e.preventDefault();
         }
     };
 
-    // ---------------- CSS ----------------
+    /* ---------------- CSS ---------------- */
     const noScrollbarCSS = `
     .no-scrollbar { scrollbar-width: none; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -202,25 +200,19 @@ export default function ProjectSection() {
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={() => (touchStartRef.current = null)}
-                style={{
-                    height: isAtHorizontalEnd ? "auto" : "100vh",
-                    overflow: "hidden",
-                }}
+                style={{ height: isAtHorizontalEnd ? "auto" : "100vh", overflow: "hidden" }}
             >
                 <div
                     ref={rowRef}
                     className="no-scrollbar flex gap-[50px] px-[50px]"
-                    style={{
-                        overflowX: "auto",
-                        height: "100%",
-                        paddingTop: 40,
-                        paddingBottom: 40,
-                    }}
+                    style={{ overflowX: "auto", height: "100%", paddingTop: 40, paddingBottom: 40 }}
                 >
                     {projects.map((project) => (
                         <div key={project.id} className="flex-shrink-0" style={{ width: 619 }}>
-                            {/* Thumbnail */}
-                            <Link to={`/single-project/${project.id}`} className="block h-[436px] rounded-[40px] overflow-hidden bg-[#c3c3c3] cursor-pointer">
+                            <Link
+                                to={`/single-project/${project.id}`}
+                                className="block h-[436px] rounded-[40px] overflow-hidden bg-[#c3c3c3]"
+                            >
                                 <ImageWithFallback
                                     src={project.thumbnail}
                                     alt={project.title}
@@ -228,29 +220,22 @@ export default function ProjectSection() {
                                 />
                             </Link>
 
-                            {/* Content */}
                             <div className="mt-[16px]">
-
-                                {/* Title */}
                                 <p className="text-[32px] uppercase text-black font-bold">
                                     {project.title}
                                 </p>
 
-                                {/* Short Description */}
                                 <p className="text-[18px] text-black max-w-[560px] mt-[6px]">
                                     {project.shortDesc}
                                 </p>
 
-                                {/* Tech Stack Pills */}
                                 <div className="flex gap-[10px] mt-[12px] flex-wrap">
-                                    {project.techStack?.slice(0, 3).map((tech, idx) => (
+                                    {project.techStack?.slice(0, 3).map((tech, i) => (
                                         <div
-                                            key={idx}
+                                            key={i}
                                             className="bg-[#dfdad3] px-[18px] py-[10px] rounded-[100px]"
                                         >
-                                            <p className="text-[16px] uppercase text-black">
-                                                {tech}
-                                            </p>
+                                            <p className="text-[16px] uppercase text-black">{tech}</p>
                                         </div>
                                     ))}
                                 </div>

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { FiArrowUpRight } from "react-icons/fi";
+
 
 // SVG Paths integrated directly from your source
 const paths = {
@@ -85,14 +87,18 @@ export default function SingleProject() {
                     <h1 className="text-[70px] text-black font-black uppercase leading-tight max-w-4xl">
                         {title}
                     </h1>
-                    <a href={visitLink} target="_blank" rel="noopener noreferrer" className="bg-[#ff4820] flex gap-3 items-center px-6 py-4 rounded-2xl text-black uppercase font-bold shrink-0">
+                    <a
+                        href={visitLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-[#ff4820] flex gap-3 items-center px-6 py-4 rounded-2xl text-white uppercase font-bold shrink-0"
+                    >
                         Visit Site
-                        <div className="bg-white p-2 rounded-lg">
-                            <svg className="size-6" fill="none" viewBox="0 0 24 24">
-                                <path d={paths.p9948500} stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-                            </svg>
+                        <div className="bg-white p-2 rounded-lg flex items-center justify-center">
+                            <FiArrowUpRight size={24} className="text-black" />
                         </div>
                     </a>
+
                 </div>
                 <p className="text-[22px] font-medium leading-[34px] uppercase text-black max-w-6xl">
                     {description}

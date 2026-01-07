@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion"; // <-- fixed import
 import svgPaths from "./svg-y0h6aaoeac.js";
 import { Link } from "react-router-dom";
+import { FaLinkedinIn, FaYoutube, FaInstagram } from "react-icons/fa";
+
 
 
 /* Reference image path (you provided as reference; not used in layout) */
@@ -207,32 +209,16 @@ export default function Header() {
                   </p>
 
                   <div className="content-stretch flex gap-[10px] items-center relative shrink-0 w-full">
+
                     {/* LinkedIn */}
                     <a
-                      href="#"
+                      href="https://www.linkedin.com/in/keshav-divate-1baa55234/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="content-stretch flex gap-[6px] items-center relative shrink-0 hover:opacity-70 transition-opacity"
-                      onClick={(e) => e.preventDefault()}
                     >
-                      <div
-                        className="relative shrink-0 size-[24px]"
-                        data-name="Icon / LinkedIn"
-                      >
-                        <svg
-                          className="block size-full"
-                          fill="none"
-                          preserveAspectRatio="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <g id="Icon / LinkedIn">
-                            <path
-                              clipRule="evenodd"
-                              d={svgPaths.p2b170900}
-                              fill="var(--fill-0, black)"
-                              fillRule="evenodd"
-                              id="Vector"
-                            />
-                          </g>
-                        </svg>
+                      <div className="relative shrink-0 size-[24px] flex items-center justify-center">
+                        <FaLinkedinIn size={18} color="#000000" />
                       </div>
                       <p className="font-[TWKEverett] font-medium leading-[normal] not-italic relative shrink-0 text-[14px] text-black text-nowrap uppercase whitespace-pre">
                         Linkedin
@@ -241,28 +227,13 @@ export default function Header() {
 
                     {/* YouTube */}
                     <a
-                      href="#"
+                      href="https://www.youtube.com/@Mr_kiki0"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="content-stretch flex gap-[6px] items-center relative shrink-0 hover:opacity-70 transition-opacity"
-                      onClick={(e) => e.preventDefault()}
                     >
-                      <div
-                        className="relative shrink-0 size-[24px]"
-                        data-name="Icon / Youtube"
-                      >
-                        <svg
-                          className="block size-full"
-                          fill="none"
-                          preserveAspectRatio="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <g id="Icon / Youtube">
-                            <path
-                              d={svgPaths.p35f23f00}
-                              fill="var(--fill-0, black)"
-                              id="Vector"
-                            />
-                          </g>
-                        </svg>
+                      <div className="relative shrink-0 size-[24px] flex items-center justify-center">
+                        <FaYoutube size={18} color="#000000" />
                       </div>
                       <p className="font-[TWKEverett] font-medium leading-[normal] not-italic relative shrink-0 text-[14px] text-black text-nowrap uppercase whitespace-pre">
                         YOUTUBE
@@ -271,37 +242,22 @@ export default function Header() {
 
                     {/* Instagram */}
                     <a
-                      href="#"
+                      href="https://www.instagram.com/keshav.divate1/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="content-stretch flex gap-[6px] items-center relative shrink-0 hover:opacity-70 transition-opacity"
-                      onClick={(e) => e.preventDefault()}
                     >
-                      <div
-                        className="relative shrink-0 size-[24px]"
-                        data-name="Icon / Instagram"
-                      >
-                        <svg
-                          className="block size-full"
-                          fill="none"
-                          preserveAspectRatio="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <g id="Icon / Instagram">
-                            <path
-                              clipRule="evenodd"
-                              d={svgPaths.p3f3f55f0}
-                              fill="var(--fill-0, black)"
-                              fillRule="evenodd"
-                              id="Vector"
-                            />
-                          </g>
-                        </svg>
+                      <div className="relative shrink-0 size-[24px] flex items-center justify-center">
+                        <FaInstagram size={18} color="#000000" />
                       </div>
                       <p className="font-[TWKEverett] font-medium leading-[normal] not-italic relative shrink-0 text-[14px] text-black text-nowrap uppercase whitespace-pre">
-                        insta
+                        INSTA
                       </p>
                     </a>
+
                   </div>
                 </div>
+
               </div>
             </motion.div>
           </>

@@ -7,7 +7,7 @@ import ImageTrail from "../../components/Animation/ImageTrail";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[30vh] md:h-[84vh] bg-[#FAF4EC] overflow-hidden">
+    <section className="relative w-full h-[30vh] md:h-[87vh] bg-[#FAF4EC] overflow-hidden">
       <div className="absolute h-full w-full" style={{ overflow: 'hidden' }}>
         <ImageTrail
           items={[

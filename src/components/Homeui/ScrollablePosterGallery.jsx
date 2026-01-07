@@ -121,7 +121,7 @@ export default function Graphicspostershowcase() {
     <section className="w-full bg-[#faf4ec] flex justify-center overflow-hidden select-none">
       <div className="max-w-[1250px] w-full py-20 flex flex-col items-center">
         <div className="mb-6">
-          <div className="text-sm tracking-widest text-gray-700 uppercase">
+          <div className="text-[20px] uppercase text-black font-medium font-[TWKEverett]">
             GRAPHICS WORK
           </div>
         </div>
@@ -171,10 +171,10 @@ export default function Graphicspostershowcase() {
         </div>
 
         <div className="mt-4 text-center pointer-events-none">
-          <h2 className="text-4xl font-extrabold text-gray-700 tracking-tight uppercase">
+          <h2 className="text-4xl text-black font-extrabold tracking-tight uppercase">
             POSTER DESIGN
           </h2>
-          <div className="mt-2 text-xs text-gray-500 uppercase">
+          <div className="mt-2 text-xs text-black uppercase">
             Swipe to rotate
           </div>
         </div>
