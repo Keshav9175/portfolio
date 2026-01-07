@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase";
-import ImageWithFallback from "../ImageWithFallback";
+import ImageWithFallback from "../image-with-fallback";
 
 export default function ProjectSection() {
     /* ---------------- CONFIG ---------------- */

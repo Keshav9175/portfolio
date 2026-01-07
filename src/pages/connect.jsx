@@ -1,6 +1,6 @@
 import React from 'react'
-import ContactPage from '../components/ConnectUI/ContactPage'
-import ConnectHero from "../components/ConnectUI/ConnectHero";
+import ContactPage from '../components/connect-ui/contact-page'
+import ConnectHero from "../components/connect-ui/connect-hero";
 
 export default function Connect() {
   return (

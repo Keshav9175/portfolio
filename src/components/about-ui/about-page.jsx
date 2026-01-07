@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import svgPaths from "../../pages/svg-7gqcb2ot8r";
-import { ImageWithFallback } from "../ImageWithFallback";
+import { ImageWithFallback } from "../image-with-fallback";
 import avatar from "../../assets/avatar.png";
 import aboutVideo from "../../assets/aboutvideo.mp4";
 import {

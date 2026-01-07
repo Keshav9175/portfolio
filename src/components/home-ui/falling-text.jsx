@@ -1,5 +1,5 @@
-import { Gravity } from "./Gravity";
-import PhysicsPill from "./PhysicsPill";
+import { Gravity } from "./gravity";
+import PhysicsPill from "./physics-pill";
 
 const pillsData = [
   { bg: "#dfb5ff", text: "gRAPHICS DESIGN", textColor: "black" },

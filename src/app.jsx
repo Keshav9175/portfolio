@@ -1,21 +1,21 @@
 import React, { Suspense, lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Loader from "./components/Loader";
-import DesktopOnly from "./components/DesktopOnly"; // ✅ ONLY ADDITION
+import Loader from "./components/loader";
+import DesktopOnly from "./components/desktop-only"; // ✅ ONLY ADDITION
 
 // Lazy pages
-const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
-const Projects = lazy(() => import("./pages/Project"));
-const Connect = lazy(() => import("./pages/Connect"));
+const Home = lazy(() => import("./pages/home"));
+const About = lazy(() => import("./pages/about"));
+const Projects = lazy(() => import("./pages/project"));
+const Connect = lazy(() => import("./pages/connect"));
 const SingleProject = lazy(() =>
-  import("./components/Projects/SingleProject")
+  import("./components/projects/single-project")
 );
 
 // Immediate components
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ScrollToTop from "./ScrollToTop";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import ScrollToTop from "./scroll-to-top";
 
 export default function App() {
   const [loading, setLoading] = useState(true);

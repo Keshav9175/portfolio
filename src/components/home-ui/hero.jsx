@@ -3,7 +3,7 @@ import avatar from "../../assets/avatar.png";
 import kbd from "../../assets/kbd.svg";     // name pill svg
 import cloth from "../../assets/cloth.svg"; // blue pill svg
 import think from "../../assets/think.svg"; // purple pill svg
-import ImageTrail from "../../components/Animation/ImageTrail";
+import ImageTrail from "../../components/animation/image-trail";
 
 export default function Hero() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import ProjectSection from "../components/Projects/ProjectSection";
-import Clients from "../components/Clients";
+import ProjectSection from "../components/projects/project-section";
+import Clients from "../components/clients";
 
 export default function Project() {
   return (

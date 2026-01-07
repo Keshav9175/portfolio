@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useGravity } from "./Gravity";
+import { useGravity } from "./gravity";
 import Matter from "matter-js";
 
 export default function PhysicsPill({ bg, text, textColor }) {

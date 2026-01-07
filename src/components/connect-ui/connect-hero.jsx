@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase"; // your existing firebase.js
-import ImageTrail from "../Animation/ImageTrail";
+import ImageTrail from "../animation/image-trail";
 
 /* responsive badges: desktop uses px left/top, mobile uses percentage left/top.
    Mobile values are centered using transform: translate(-50%,-50%) so badges don't

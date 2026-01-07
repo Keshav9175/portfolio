@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase"; // your existing firebase.js
-import { ImageWithFallback } from "../ImageWithFallback";
+import { ImageWithFallback } from "../image-with-fallback";
 import avatar from "../../assets/avatar.png";
-import ImageTrail from "../Animation/ImageTrail";
+import ImageTrail from "../animation/image-trail";
 
 const AboutHero = () => {
     const [trailImages, setTrailImages] = useState([]);

@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 
 // Import icons
-import FigmaSVG from "../../assets/icons/Figma.svg";
+// Import icons
+import FigmaSVG from "../../assets/icons/figma.svg";
 import IllustratorSVG from "../../assets/icons/illustrator.svg";
 import PhotoshopSVG from "../../assets/icons/photoshop.svg";
 import NodeSVG from "../../assets/icons/node.svg";

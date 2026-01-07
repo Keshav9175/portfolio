@@ -1,6 +1,6 @@
 // Clients.jsx
 import React from "react";
-import { ImageWithFallback } from "./ImageWithFallback";
+import { ImageWithFallback } from "./image-with-fallback";
 
 // IMPORT YOUR LOGOS
 import creativeLogo from "../assets/clients/creative.svg";
