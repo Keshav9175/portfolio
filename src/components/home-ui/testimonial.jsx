@@ -1,5 +1,5 @@
 import React from "react";
-import WebflowIcon from "../../assets/icons/webflow.svg";
+// import WebflowIcon from "../../assets/icons/webflow.svg";
 
 const testimonials = [
   {
@@ -48,9 +48,9 @@ const Testimonial = () => {
             {/* Header */}
             <div className="flex items-center gap-4">
               <img
-                src={WebflowIcon}
+                src="" // Placeholder: WebflowIcon was missing
                 alt="profile"
-                className="w-12 h-12 rounded-full object-cover"
+                className="w-12 h-12 rounded-full object-cover bg-gray-300"
               />
               <div className="flex flex-col justify-center">
                 <h2 className="font-['TWKEverett'] font-medium text-[18px] text-black uppercase leading-tight">{item.name}</h2>

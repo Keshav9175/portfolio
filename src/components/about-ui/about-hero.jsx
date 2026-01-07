@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase"; // your existing firebase.js
 import { ImageWithFallback } from "../image-with-fallback";
-import avatar from "../../assets/avatar.png";
 import ImageTrail from "../animation/image-trail";
 
 const AboutHero = () => {
@@ -67,7 +66,7 @@ const AboutHero = () => {
                         <div className="h-[168px] w-[144px] relative rounded-[18px]">
                             <ImageWithFallback
                                 alt=""
-                                src={avatar}
+                                src="/avatar.png"
                                 className="absolute inset-0 object-cover max-w-none pointer-events-none rounded-[18px] size-full"
                             />
                         </div>

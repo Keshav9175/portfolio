@@ -7,7 +7,6 @@ import React, {
   useState
 } from "react";
 import { gsap } from "gsap";
-import logoSvg from "../assets/logo.svg";
 
 /**
  * StaggeredMenu Component

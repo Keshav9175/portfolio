@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import svgPaths from "../../pages/svg-7gqcb2ot8r";
 import { ImageWithFallback } from "../image-with-fallback";
-import avatar from "../../assets/avatar.png";
-import aboutVideo from "../../assets/aboutvideo.mp4";
 import {
     SiFigma,
     SiAdobephotoshop,
@@ -31,6 +29,9 @@ const imgFrame21 = null;
 const imgFrame22 = null;
 const imgFrame23 = null;
 const imgGroup = null;
+const aboutVideo =
+    "https://firebasestorage.googleapis.com/v0/b/portfolio-keshav-93f5b.firebasestorage.app/o/project-images%2Fvideo%2Faboutvideo.mp4?alt=media&token=88aadfc1-23dc-4f17-9cdf-71abaee82609";
+
 
 function ToolLogo({ children }) {
     return (
@@ -179,8 +180,10 @@ export default function AboutPage() {
                             muted
                             loop
                             playsInline
+                            preload="auto"
                             style={{ pointerEvents: "none" }}
                         />
+
                     </div>
 
                     {/* Play pill positioned bottom-right */}

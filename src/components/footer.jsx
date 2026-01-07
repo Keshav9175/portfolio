@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.svg";
 
 // Temporary social icons (replace with your SVGs later)
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaBehance } from "react-icons/fa";
@@ -23,7 +22,7 @@ const Footer = () => {
       ">
         <div className="flex items-center justify-start gap-20">
           {/* Logo */}
-          <img src={logo} alt="logo" className="w-50" />
+          <img src="/logo.svg" alt="logo" className="w-50" />
 
           {/* Center Navigation */}
           <nav className="hidden md:flex gap-10 text-[16px] font-semibold tracking-wide">

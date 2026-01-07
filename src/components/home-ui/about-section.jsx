@@ -1,21 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
-// Import icons
-// Import icons
-import FigmaSVG from "../../assets/icons/figma.svg";
-import IllustratorSVG from "../../assets/icons/illustrator.svg";
-import PhotoshopSVG from "../../assets/icons/photoshop.svg";
-import NodeSVG from "../../assets/icons/node.svg";
-import ReactSVG from "../../assets/icons/react.svg";
-import TsSVG from "../../assets/icons/ts.svg";
-import JsSVG from "../../assets/icons/js.svg";
-import TailwindSVG from "../../assets/icons/tailwind.svg";
-import NotionSVG from "../../assets/icons/notion.svg";
-import WebflowSVG from "../../assets/icons/webflow.svg";
-
-// 1. Single variable for all text
-const text = "Keshav Divate is a passionate UI/ UX designer and developer who blends creativity with technology, crafting intuitive, engaging, and user-centered digital experiences through design and code.";
+// TEXT (unchanged)
+const text =
+  "Keshav Divate is a passionate UI/ UX designer and developer who blends creativity with technology, crafting intuitive, engaging, and user-centered digital experiences through design and code.";
 
 export default function SkillsAndAbout() {
   const container = useRef(null);
@@ -26,6 +16,32 @@ export default function SkillsAndAbout() {
 
   const words = text.split(" ");
   const totalWords = words.length;
+
+  // 🔹 ICONS STATE
+  const [icons, setIcons] = useState([]);
+
+  // 🔹 FETCH ICONS FROM FIRESTORE
+  useEffect(() => {
+    const fetchIcons = async () => {
+      try {
+        const docRef = doc(db, "icons", "b2Pl7McZvSffrLJKcXcX");
+        const snap = await getDoc(docRef);
+
+        if (snap.exists()) {
+          const data = snap.data();
+
+          // EXACT FIELD NAME FROM FIRESTORE
+          if (Array.isArray(data.skillicons)) {
+            setIcons(data.skillicons);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching skill icons:", error);
+      }
+    };
+
+    fetchIcons();
+  }, []);
 
   return (
     <div className="w-full bg-[#FAF4EC]">
@@ -48,8 +64,6 @@ export default function SkillsAndAbout() {
           {words.map((word, i) => {
             const start = i / totalWords;
             const end = start + 1 / totalWords;
-
-            // Logic: If word is 'UI/', remove the right margin so it touches 'UX'
             const isUI = word === "UI/";
 
             return (
@@ -65,39 +79,33 @@ export default function SkillsAndAbout() {
           })}
         </p>
 
-        {/* ICONS */}
+        {/* ICONS — UI UNCHANGED */}
         <div className="mt-[60px] w-full flex flex-wrap gap-[40px] justify-center items-center">
-          <img src={FigmaSVG} alt="Figma" className="w-[60px] h-[80px]" />
-          <img src={IllustratorSVG} alt="Illustrator" className="w-[80px] h-[80px]" />
-          <img src={PhotoshopSVG} alt="Photoshop" className="w-[80px] h-[80px]" />
-          <img src={NodeSVG} alt="NodeJS" className="w-[80px] h-[80px]" />
-          <img src={ReactSVG} alt="React" className="w-[80px] h-[80px]" />
-          <img src={TsSVG} alt="TypeScript" className="w-[80px] h-[80px]" />
-          <img src={JsSVG} alt="JavaScript" className="w-[80px] h-[80px]" />
-          <img src={TailwindSVG} alt="Tailwind" className="w-[100px] h-[60px]" />
-          <img src={NotionSVG} alt="Notion" className="w-[80px] h-[80px]" />
-          <img src={WebflowSVG} alt="Webflow" className="w-[80px] h-[80px]" />
+          {icons.map((url, index) => (
+            <img
+              key={index}
+              src={url}
+              alt="skill-icon"
+              className="w-[80px] h-[80px] object-contain"
+            />
+          ))}
         </div>
+
       </div>
     </div>
   );
 }
 
+// WORD COMPONENT (unchanged)
 const Word = ({ children, progress, range, hasNoMargin }) => {
   const opacity = useTransform(progress, range, [0.2, 1]);
 
   return (
     <motion.span
       style={{ opacity }}
-      className={`
-        relative inline-block
-        font-extrabold text-black 
-        ${hasNoMargin ? "mr-0" : "mr-[0.25em]"}
-      `}
+      className={`relative inline-block font-extrabold text-black ${hasNoMargin ? "mr-0" : "mr-[0.25em]"
+        }`}
     >
-      {/* Change 'font-extrabold' above to 'font-bold' or 'font-black' 
-         if you need to fine-tune the weight further.
-      */}
       {children}
     </motion.span>
   );

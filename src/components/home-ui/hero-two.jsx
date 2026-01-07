@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import avatar from "../../assets/avatar.png";
 
 export default function HeroTwo() {
     const maskMainRef = useRef(null);
@@ -156,7 +155,7 @@ export default function HeroTwo() {
 
                     {/* Center PNG */}
                     <img
-                        src={avatar}
+                        src="/avatar.png"
                         alt="badge"
                         className="w-[64px] h-[64px] object-contain z-[2]"
                     />
