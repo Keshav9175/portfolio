@@ -46,11 +46,13 @@ export default function Header() {
           <div className="box-border content-stretch flex items-center justify-between px-[16px] md:px-[50px] py-[27px] relative w-full">
             {/* Logo + text */}
             <div className="content-stretch flex items-center relative shrink-0">
-              <img
-                src="/creative.svg"
-                alt="Creative Logo"
-                className="shrink-0 h-[20px] md:h-[30px] w-auto md:h-[34px] 2xl:h-[28px]"
-              />
+              <Link to="/">
+                <img
+                  src="/creative.svg"
+                  alt="Creative Logo"
+                  className="shrink-0 h-[20px] md:h-[30px] w-auto md:h-[34px] 2xl:h-[28px]"
+                />
+              </Link>
             </div>
 
             {/* Menu button (same markup as you had) */}

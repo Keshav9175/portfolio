@@ -11,51 +11,55 @@ const flowerSvg = (
 );
 
 const MarqueeRow = ({ texts, direction = 1 }) => {
-  const rowRef = useRef(null);
   const trackRef = useRef(null);
 
   useEffect(() => {
     const track = trackRef.current;
     const items = track.children;
 
-    // 1. Create the infinite loop
-    // We animate the track from 0 to -50% (since we duplicated the content)
-    const totalWidth = track.offsetWidth / 2;
+    // Set initial position for reverse rows to avoid jump on start
+    if (direction < 0) {
+      gsap.set(track, { xPercent: -50 });
+    }
 
+    // Main animation: Move exactly 50% (the length of one full set of text)
     const loop = gsap.to(track, {
-      x: direction > 0 ? -totalWidth : 0,
-      duration: 20, // Base speed (higher is slower)
+      xPercent: direction > 0 ? -50 : 0,
       ease: "none",
+      duration: 20,
       repeat: -1,
-      // Start at the correct position if moving right
-      startAt: direction > 0 ? { x: 0 } : { x: -totalWidth }
+      startAt: direction > 0 ? { xPercent: 0 } : { xPercent: -50 }
     });
 
-    // 2. Velocity logic
-    // We create a ScrollTrigger that listens to the global scroll velocity
-    ScrollTrigger.create({
-      onUpdate: (self) => {
-        const velocity = Math.abs(self.getVelocity() / 1000); // Normalize velocity
-        const targetTimeScale = 1 + velocity; // Base speed + scroll speed
+    // quickTo creates a smoothed transition for the speed boost
+    // This prevents the "jerky" speed changes when starting/stopping scrolling
+    const setTimeScale = gsap.quickTo(loop, "timeScale", {
+      duration: 0.5,
+      ease: "power2.out"
+    });
 
-        // Smoothly transition the animation speed
-        gsap.to(loop, {
-          timeScale: targetTimeScale,
-          duration: 0.5,
-          overwrite: true
-        });
+    const trigger = ScrollTrigger.create({
+      onUpdate: (self) => {
+        const velocity = Math.abs(self.getVelocity());
+        // Map scroll velocity to a speed multiplier (1 = normal, 3 = fast)
+        const boost = gsap.utils.clamp(0, 2.5, velocity / 800);
+        setTimeScale(1 + boost);
       }
     });
 
     return () => {
       loop.kill();
+      trigger.kill();
     };
   }, [direction]);
 
   return (
-    <div ref={rowRef} className="flex overflow-hidden whitespace-nowrap border-y border-transparent">
-      <div ref={trackRef} className="flex items-center flex-nowrap">
-        {/* We render the row twice so it loops seamlessly */}
+    <div className="flex overflow-hidden whitespace-nowrap border-y border-transparent">
+      <div
+        ref={trackRef}
+        className="flex items-center flex-nowrap will-change-transform"
+      >
+        {/* We render twice for the seamless loop */}
         {[1, 2].map((group) => (
           <div key={group} className="flex items-center flex-nowrap">
             {texts.map((text, i) => (

@@ -199,7 +199,7 @@ export default function ProjectShowcase() {
                   </div>
 
                   <div className="flex-1 flex justify-center md:justify-end">
-                    <div className="aspect-[1.3] relative rounded-[24px] w-full max-w-[720px] overflow-hidden bg-gray-100">
+                    <div className="aspect-[1.3] 2xl:aspect-[1.6] relative rounded-[24px] w-full max-w-[720px] overflow-hidden bg-gray-100">
                       <img
                         src={project.thumbnail}
                         alt={`project-${project.title}`}

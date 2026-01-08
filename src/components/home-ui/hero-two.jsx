@@ -59,14 +59,14 @@ export default function HeroTwo() {
             <img
                 src="https://firebasestorage.googleapis.com/v0/b/portfolio-keshav-93f5b.firebasestorage.app/o/project-images%2FOther%20Images%2FTop%20(1).svg?alt=media&token=670c288c-3858-4797-ac75-c19af9d6ac5b"
                 alt="Front"
-                className="absolute inset-0 w-full h-full object-cover block scale-[1.02] z-[1]"
+                className="absolute inset-0 w-full h-full object-cover lg:object-contain block scale-[1.02] z-[1]"
             />
 
             {/* BACK SVG (LIQUID REVEAL) */}
             <img
                 src="https://firebasestorage.googleapis.com/v0/b/portfolio-keshav-93f5b.firebasestorage.app/o/project-images%2FOther%20Images%2FBottom.svg?alt=media&token=a98b8014-f693-40ee-8d5b-55b6ce3e5df8"
                 alt="Back"
-                className="absolute inset-0 w-full h-full object-cover block scale-[1.02] z-[2]
+                className="absolute inset-0 w-full h-full object-cover lg:object-contain block scale-[1.02] z-[2]
            [mask:url(#ink-mask)] [-webkit-mask:url(#ink-mask)]
            [filter:url(#image-liquid-filter)]"
             />
