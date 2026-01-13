@@ -95,7 +95,7 @@ export default function ProjectShowcase() {
             wEB UI Project
           </p>
 
-          {projects.map((project, idx) => (
+          {projects.slice(0, 4).map((project, idx) => (
             <div
               key={project.uniqueId}
               ref={(el) => (cardsRef.current[idx] = el)}

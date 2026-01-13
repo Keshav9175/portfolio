@@ -221,11 +221,11 @@ export default function ProjectSection() {
                             </Link>
 
                             <div className="mt-[16px]">
-                                <p className="text-[32px] uppercase text-black font-bold">
+                                <p className="text-4xl text-black font-extrabold tracking-tight uppercase">
                                     {project.title}
                                 </p>
 
-                                <p className="text-[18px] text-black max-w-[560px] mt-[6px]">
+                                <p className="text-[20px] uppercase text-black max-w-[560px] mt-[6px]">
                                     {project.shortDesc}
                                 </p>
 

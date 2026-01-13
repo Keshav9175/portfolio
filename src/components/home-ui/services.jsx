@@ -87,9 +87,9 @@ const Services = () => {
 
   return (
     <section
-      className="relative overflow-hidden flex flex-col justify-center bg-[#7A25F9] py-20 min-h-[732px]"
+      className="relative overflow-hidden flex flex-col justify-center bg-[#7A25F9] py-20"
     >
-      <div className="flex flex-col gap-10 md:gap-[60px]">
+      <div className="flex flex-col gap-10 md:gap-[40px]">
         {rows.map((row, index) => (
           <MarqueeRow
             key={index}

@@ -6,30 +6,30 @@ const testimonials = [
     role: "Developer",
     text: "PASSIONATE UI/UX DESIGNER WITH A STRONG EYE FOR DETAIL AND A DEEP UNDERSTANDING OF USER-CENTERED DESIGN PRINCIPLES. DELIVERS CLEAN, INTUITIVE, AND HIGH-IMPACT DIGITAL EXPERIENCES.",
     bg: "bg-[#C59BFF]",
-    img: "https://randomuser.me/api/portraits/men/32.jpg"
+    img: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?auto=format&fit=crop&w=400&q=80"
   },
   {
     name: "Krishna N",
     role: "Owner",
     text: "HIGHLY CREATIVE AND PROFESSIONAL DESIGNER WHO CONSISTENTLY DELIVERS VISUALLY APPEALING AND FUNCTIONAL INTERFACES. STRONGLY FOCUSED ON BRAND CONSISTENCY AND USER EXPERIENCE.",
     bg: "bg-white",
-    img: "https://randomuser.me/api/portraits/men/45.jpg"
+    img: "https://images.unsplash.com/photo-1614289371518-722f2615943d?auto=format&fit=crop&w=400&q=80"
   },
   {
     name: "Akshay C",
     role: "Developer",
     text: "A SKILLED UI/UX DESIGNER WITH EXCELLENT PROBLEM-SOLVING ABILITIES. CREATES MODERN, USER-FRIENDLY DESIGNS THAT BALANCE AESTHETICS AND USABILITY EFFECTIVELY.",
     bg: "bg-[#A5E9C2]",
-    img: "https://randomuser.me/api/portraits/men/68.jpg"
+    img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=400&q=80"
   },
   {
     name: "Swapnil K",
     role: "Developer",
     text: "CONSISTENTLY PRODUCES POLISHED AND THOUGHTFUL DESIGN SOLUTIONS. STRONG UNDERSTANDING OF USER FLOWS, INTERACTION DESIGN, AND VISUAL HIERARCHY ACROSS PLATFORMS.",
     bg: "bg-[#D9D9D9]",
-    img: "https://randomuser.me/api/portraits/men/76.jpg"
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80"
   }
-];
+]
 
 const Testimonial = () => {
   return (
@@ -65,7 +65,7 @@ const Testimonial = () => {
             </div>
 
             {/* Text */}
-            <p className="mt-6 font-['TWKEverett'] font-medium text-[18px] text-black uppercase leading-[1.5] opacity-70">
+            <p className="mt-6 font-['TWKEverett'] font-regular text-[18px] text-black uppercase leading-[1.5] opacity-90">
               {item.text}
             </p>
           </div>
