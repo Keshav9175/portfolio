@@ -25,7 +25,6 @@ export default function SingleProject() {
             if (!id) return;
             try {
                 const docRef = doc(db, "projects", id);
-                console.log("Fetching project with ID:", id);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setProject(docSnap.data());
@@ -54,8 +53,13 @@ export default function SingleProject() {
     const heroImage = project.thumbnail || "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=1200";
     const title = project.title || "Untitled Project";
     const visitLink = project.liveUrl || "#";
-    const description = project.fullDesc || "No description available.";
-    const screens = (project.images || []).filter(img => img);
+    const description = project.mainDiscription || "No description available.";
+    const caseStudyImage =
+        typeof project.images === "string" && project.images.trim() !== ""
+            ? project.images
+            : null;
+
+
 
     return (
         <div className="bg-[#faf4ec] flex flex-col items-center w-full min-h-screen overflow-x-hidden">
@@ -106,18 +110,26 @@ export default function SingleProject() {
             </section>
 
             {/* SCREENSHOTS GRID */}
-            {screens.length > 0 && (
+            {caseStudyImage && (
                 <section className="w-full px-[50px] py-[80px] border-b border-black/10 text-center">
-                    <h2 className="text-[32px]  text-black font-black uppercase mb-14">More Images</h2>
-                    <div className="grid grid-cols-4 gap-10">
-                        {screens.map((src, i) => (
-                            <div key={i} className="h-[622px] rounded-3xl overflow-hidden bg-gray-200">
-                                <img src={src} alt={`Screenshot ${i + 1}`} className="w-full h-full object-cover" />
-                            </div>
-                        ))}
+                    <h2 className="text-[32px] text-black font-black uppercase mb-14">
+                        Case Study
+                    </h2>
+
+                    <div className="w-full flex justify-center">
+                        <div class="w-full max-w-[1800px] 2xl:max-w-[2200px]">
+                            <img
+                                src={caseStudyImage}
+                                alt="Case Study"
+                                loading="lazy"
+                                className="w-full h-auto rounded-3xl"
+                            />
+                        </div>
                     </div>
+
                 </section>
             )}
+
         </div>
     );
 }
