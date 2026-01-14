@@ -66,7 +66,7 @@ const AboutHero = () => {
                         <div className="h-[168px] w-[144px] relative rounded-[18px]">
                             <ImageWithFallback
                                 alt=""
-                                src="/avatar.png"
+                                src="/images/avatar.png"
                                 className="absolute inset-0 object-cover max-w-none pointer-events-none rounded-[18px] size-full"
                             />
                         </div>

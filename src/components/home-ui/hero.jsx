@@ -29,7 +29,7 @@ export default function Hero() {
 
       {/* Right side small pill (cloth svg) */}
       <img
-        src="/cloth.svg"
+        src="/images/cloth.svg"
         alt="cloth-label"
         className="
           absolute 
@@ -42,7 +42,7 @@ export default function Hero() {
 
       {/* Left small pill (think svg) */}
       <img
-        src="/think.svg"
+        src="/images/think.svg"
         alt="think-label"
         className="
           absolute 
@@ -74,7 +74,7 @@ export default function Hero() {
 
       {/* Bottom-center name pill (kbd svg) */}
       <img
-        src="/kbd.svg"
+        src="/images/kbd.svg"
         alt="kbd-pill"
         className="
           absolute 
@@ -99,7 +99,7 @@ export default function Hero() {
           className="relative rounded-full bg-white w-20 h-20 flex items-center justify-center shadow-md"
           style={{ boxShadow: "0 6px 20px rgba(0,0,0,0.12)" }}
         >
-          <img src="/avatar.png" alt="avatar" className="w-16 h-16 rounded-full object-cover" />
+          <img src="/images/avatar.png" alt="avatar" className="w-16 h-16 rounded-full object-cover" />
         </div>
 
         <div className="hidden md:flex flex-col text-xs text-[#2b2a29] tracking-wide">

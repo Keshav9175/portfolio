@@ -48,7 +48,7 @@ export default function Header() {
             <div className="content-stretch flex items-center relative shrink-0">
               <Link to="/">
                 <img
-                  src="/creative.svg"
+                  src="/images/creative.svg"
                   alt="Creative Logo"
                   className="shrink-0 h-[20px] md:h-[30px] w-auto md:h-[34px] 2xl:h-[28px]"
                 />

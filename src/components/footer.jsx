@@ -22,7 +22,7 @@ const Footer = () => {
       ">
         <div className="flex items-center justify-start gap-20">
           {/* Logo */}
-          <img src="/logo.svg" alt="logo" className="w-50" />
+          <img src="/images/logo.svg" alt="logo" className="w-50" />
 
           {/* Center Navigation */}
           <nav className="hidden md:flex gap-10 text-[16px] font-semibold tracking-wide">
