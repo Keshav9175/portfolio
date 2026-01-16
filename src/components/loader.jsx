@@ -1,92 +1,113 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
-export default function Loader({ onComplete }) {
+const Loader = ({ onComplete }) => {
     const container = useRef(null);
-    const topStrip = useRef(null);
-    const bottomStrip = useRef(null);
+    const text = "LOADING";
+    const charHeight = 180; // Matches font size
 
     useEffect(() => {
-        const tl = gsap.timeline({
-            delay: 1.8,
-            defaults: { ease: "power4.inOut" },
-        });
+        const letters = container.current.querySelectorAll('.letter-inner');
 
-        // Move strips out together
-        tl.to(topStrip.current, {
-            xPercent: -130,
-            yPercent: -130,
-            duration: 1.2,
-        })
-            .to(
-                bottomStrip.current,
-                {
-                    xPercent: 130,
-                    yPercent: 130,
-                    duration: 1.2,
-                },
-                "<" // same start time
-            )
+        // Create an infinite timeline
+        const tl = gsap.timeline({ repeat: -1 });
 
-            // Keep loader for 1 frame, then fade it out
-            .to(container.current, {
+        // We loop through the colors: Yellow -> Blue -> Yellow -> Blue -> (Instant Reset)
+        tl.to(letters, {
+            y: -charHeight, // To 1st Blue
+            duration: 0.8,
+            ease: "power4.inOut",
+            stagger: 0.1
+        }, "+=0.2")
+            .to(letters, {
+                y: -charHeight * 2, // To 2nd Yellow
+                duration: 0.8,
+                ease: "power4.inOut",
+                stagger: 0.1
+            }, "+=0.2")
+            .to(letters, {
+                y: -charHeight * 3, // To 2nd Blue
+                duration: 0.8,
+                ease: "power4.inOut",
+                stagger: 0.1
+            }, "+=0.2")
+            .to(letters, {
+                y: -charHeight * 4, // To 3rd Yellow (Loop Point)
+                duration: 0.8,
+                ease: "power4.inOut",
+                stagger: 0.1
+            }, "+=0.2")
+            .set(letters, { y: 0 }); // Instant jump back to start (invisible to the user)
+
+        // Global Exit Timer
+        const exitTimer = setTimeout(() => {
+            gsap.to(container.current, {
                 autoAlpha: 0,
-                duration: 0.01, // 👈 one-frame fade
-            })
-
-            // NOW tell React to unmount
-            .add(() => {
-                onComplete?.();
+                duration: 0.8,
+                onComplete: () => onComplete?.()
             });
+        }, 8000);
 
-        return () => tl.kill();
+        return () => {
+            tl.kill();
+            clearTimeout(exitTimer);
+        };
     }, [onComplete]);
 
     return (
         <div
             ref={container}
-            className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden"
+            className="fixed inset-0 flex items-center justify-center bg-[#faf4ec] z-[9999] overflow-hidden"
         >
-            {/* TOP STRIP */}
-            <div
-                ref={topStrip}
-                className="absolute left-[-25%] top-[42%] w-[150%]
-             bg-[#FE7524] rotate-[-8deg]
-             flex items-center py-[20px]"
-            >
-                <Marquee />
+            <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@900&display=swap');
+        
+        .letter-window {
+          height: ${charHeight}px; 
+          overflow: hidden; 
+          position: relative;
+        }
+
+        .letter-inner {
+          display: flex;
+          flex-direction: column;
+          will-change: transform;
+        }
+
+        .char {
+          height: ${charHeight}px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Montserrat Alternates', sans-serif;
+          font-size: ${charHeight}px;
+          font-weight: 900;
+          line-height: 0.8; 
+          padding: 0 4px;
+          user-select: none;
+        }
+      `}</style>
+
+            <div className="flex">
+                {text.split("").map((char, i) => (
+                    <div key={i} className="letter-window">
+                        <div className="letter-inner">
+                            {/* Stack: Y -> B -> Y -> B -> Y(Reset target) */}
+                            <div className="char" style={{ color: '#FC2439' }}>{char}</div>
+                            <div className="char" style={{ color: '#7A25F9' }}>{char}</div>
+                            <div className="char" style={{ color: '#FC2439' }}>{char}</div>
+                            <div className="char" style={{ color: '#7A25F9' }}>{char}</div>
+                            <div className="char" style={{ color: '#FC2439' }}>{char}</div>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            {/* BOTTOM STRIP */}
-            <div
-                ref={bottomStrip}
-                className="absolute left-[-25%] top-[54%] w-[150%]
-             bg-[#FE7524] rotate-[8deg]
-             flex items-center py-[20px]"
-            >
-                <Marquee reverse />
+            <div className="absolute bottom-10 left-10 text-[12px] font-bold uppercase tracking-[0.3em] text-black opacity-40">
+                KESHAV DIVATE PORTFOLIO
             </div>
         </div>
     );
-}
+};
 
-function Marquee({ reverse }) {
-    return (
-        <div
-            className={`flex gap-14 whitespace-nowrap ${reverse ? "animate-marquee-reverse" : "animate-marquee"
-                }`}
-        >
-            {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="flex items-center gap-14">
-                    <span className="text-black italic font-extrabold uppercase text-[44px] md:text-[44px] leading-tight">
-                        LOADING
-                    </span>
-
-                    <svg className="w-10 h-10 fill-white" viewBox="0 0 24 24">
-                        <path d="M5 4l7 8-7 8h4l7-8-7-8z" />
-                    </svg>
-                </div>
-            ))}
-        </div>
-    );
-}
+export default Loader;
