@@ -143,7 +143,7 @@ export default function AboutPage() {
             {/* Video / Subtract area (Frame9) - Masked Video Implementation */}
             <div className="w-full flex items-center justify-center py-20 px-6">
                 <div
-                    className="relative w-full max-w-[1340px] mx-auto"
+                    className="relative w-full mx-auto"
                     style={{ width: "100%", maxWidth: 1340, aspectRatio: "1340 / 677" }}
                 >
                     {/* SVG mask definition (inline) */}
