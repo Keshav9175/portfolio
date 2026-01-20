@@ -60,51 +60,39 @@ export default function HeroTwo() {
                 src="https://firebasestorage.googleapis.com/v0/b/portfolio-keshav-93f5b.firebasestorage.app/o/project-images%2FOther%20Images%2FTop%20(1).svg?alt=media&token=670c288c-3858-4797-ac75-c19af9d6ac5b"
                 alt="Front"
                 className="
-        absolute
-        bottom-0
-        left-1/2
-        -translate-x-1/2
-
-        w-full
-        h-auto
-        object-contain
-        scale-[1.02]
-
-        /* BIG SCREEN FIX */
-        xl:w-auto
-        2xl:w-auto
-
-        z-[1]
-    "
+                absolute
+                bottom-0
+                left-1/2
+                -translate-x-1/2
+                w-full
+                h-auto
+                2xl:h-full
+                object-contain
+                scale-[1.02]
+                z-[1]
+            "
             />
-
 
             {/* BACK SVG (LIQUID REVEAL) */}
             <img
                 src="https://firebasestorage.googleapis.com/v0/b/portfolio-keshav-93f5b.firebasestorage.app/o/project-images%2FOther%20Images%2FBottom.svg?alt=media&token=a98b8014-f693-40ee-8d5b-55b6ce3e5df8"
                 alt="Back"
                 className="
-        absolute
-        bottom-0
-        left-1/2
-        -translate-x-1/2
-
-        w-full
-        h-auto
-        object-contain
-        scale-[1.02]
-
-        /* BIG SCREEN FIX */
-        xl:w-auto
-        2xl:w-auto
-
-        z-[2]
-        [mask:url(#ink-mask)]
-        [-webkit-mask:url(#ink-mask)]
-        [filter:url(#image-liquid-filter)]
-    "
+                    absolute
+                    bottom-0
+                    left-1/2
+                    -translate-x-1/2
+                    w-full
+                    h-auto
+                    2xl:h-full
+                    object-contain
+                    scale-[1.02]
+                    z-[2]
+                    [mask:url(#ink-mask)]
+                    [-webkit-mask:url(#ink-mask)]
+                    [filter:url(#image-liquid-filter)]
+                "
             />
-
 
             {/* SVG ENGINE */}
             <svg className="absolute w-0 h-0">

@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 const Loader = ({ onComplete }) => {
     const container = useRef(null);
-    const text = "LOADING";
+    const text = "LOADING...";
     const charHeight = 180; // Matches font size
 
     useEffect(() => {
