@@ -30,7 +30,7 @@ const AboutHero = () => {
 
     return (
         <div className=" bg-[#faf4ec] h-[694px] mb-[-2px] flex justify-center relative shrink-0 w-full">
-            <div className="box-border content-stretch flex flex-col gap-[60px] h-[694px] items-center justify-center overflow-clip pb-[40px] pt-[20px] relative rounded-[inherit] w-[1440px]">
+            <div className="box-border content-stretch flex flex-col gap-[60px] h-[694px] items-center justify-center overflow-clip pb-[40px] pt-[20px] relative rounded-[inherit] w-full">
 
                 {/* IMAGE TRAIL (ONLY THIS IS DYNAMIC) */}
                 <div className="absolute h-full w-full" style={{ overflow: 'hidden' }}>

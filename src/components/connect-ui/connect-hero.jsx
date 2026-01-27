@@ -54,7 +54,7 @@ function BadgeButton({ text, themeShadow, size = "md" }) {
 
     return (
         <div
-            className={`bg-white box-border flex items-center justify-center rounded-[100px] ${padding} max-w-[85vw]`}
+            className={`bg-white box-border flex items-center justify-center rounded-[100px] ${padding} w-full`}
             role="button"
             tabIndex={0}
         >
