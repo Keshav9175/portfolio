@@ -96,14 +96,14 @@ export default function ConnectHero() {
     }, []);
 
     return (
-        <section className=" bg-[#FAF4EC] h-[400px] md:h-[694px] mb-[-2px] relative shrink-0 w-full z-0">
+        <section className=" bg-[#FAF4EC] h-[400px] md:h-[694px] mb-[-2px] relative shrink-0 w-full z-0 flex justify-center">
             <div className="absolute h-full w-full" style={{ overflow: "hidden" }}>
                 {trailImages.length > 0 && (
                     <ImageTrail items={trailImages} variant={1} />
                 )}
             </div>
 
-            <div className="box-border flex flex-col gap-[60px] h-[400px] md:h-[694px] items-center justify-center md:overflow-clip overflow-visible pb-[40px] pt-[20px] px-[20px] relative rounded-[inherit] w-full">
+            <div className="box-border flex flex-col gap-[60px] h-[400px] md:h-[694px] items-center justify-center md:overflow-clip overflow-visible pb-[40px] pt-[20px] px-[20px] relative rounded-[inherit] w-[1440px]">
                 <div className="font-[TWKEverett,sans-serif] font-black leading-[60px] md:leading-[160px] text-[66px] md:text-[172.979px] text-[#32312F] text-center uppercase">
                     <p className="mb-0">Work</p>
                     <p className="mb-0">with</p>
