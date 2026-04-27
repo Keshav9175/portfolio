@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase"; // adjust path if needed
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 /* ------------------ ANIMATION CONFIG (UNCHANGED) ------------------ */
 
@@ -114,12 +115,25 @@ export default function Graphicspostershowcase() {
     }
   };
 
+  const handlePrev = () => {
+    setIndex((prev) => wrap(0, imgs.length, prev - 1));
+  };
+
+  const handleNext = () => {
+    setIndex((prev) => wrap(0, imgs.length, prev + 1));
+  };
+
   /* ---------- SAFETY CHECK ---------- */
   if (!imgs.length) return null;
 
   return (
-    <section className="w-full bg-[#faf4ec] flex justify-center overflow-hidden select-none">
-      <div className="max-w-[1250px] w-full py-20 flex flex-col items-center">
+    <motion.section 
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
+      className="relative w-full bg-[#faf4ec] flex justify-center overflow-hidden select-none"
+    >
+      <div className="max-w-[1250px] relative w-full py-20 flex flex-col items-center">
         <div className="mb-6">
           <div className="text-[20px] uppercase text-black font-medium font-[TWKEverett]">
             GRAPHICS WORK
@@ -179,6 +193,36 @@ export default function Graphicspostershowcase() {
           </div>
         </div>
       </div>
-    </section>
+
+      {/* LEFT ARROW (Scrolls items to the Left -> Next item on the right comes to center) 
+          Wait, user wants clicking LEFT arrow to scroll images to the LEFT. 
+          If images physically move LEFT, the item on the RIGHT comes to the center.
+          So LEFT arrow -> handleNext
+      */}
+      <motion.button
+        onClick={handleNext}
+        variants={{
+          hidden: { opacity: 0, x: -150 },
+          visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        }}
+        className="absolute left-4 md:left-12 xl:left-24 top-[50%] -translate-y-1/2 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.15)] z-[100] text-black hover:scale-110 transition-transform cursor-pointer"
+      >
+        <FiChevronLeft size={28} />
+      </motion.button>
+
+      {/* RIGHT ARROW (Scrolls items to the Right -> Item on the left comes to center)
+          So RIGHT arrow -> handlePrev
+      */}
+      <motion.button
+        onClick={handlePrev}
+        variants={{
+          hidden: { opacity: 0, x: 150 },
+          visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        }}
+        className="absolute right-4 md:right-12 xl:right-24 top-[50%] -translate-y-1/2 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.15)] z-[100] text-black hover:scale-110 transition-transform cursor-pointer"
+      >
+        <FiChevronRight size={28} />
+      </motion.button>
+    </motion.section>
   );
 }

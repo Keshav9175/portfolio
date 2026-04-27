@@ -7,6 +7,14 @@ const Loader = ({ onComplete }) => {
     const charHeight = 180; // Matches font size
 
     useEffect(() => {
+        // Prevent scrolling while loader is active
+        const preventDefault = (e) => e.preventDefault();
+        window.addEventListener('wheel', preventDefault, { passive: false });
+        window.addEventListener('touchmove', preventDefault, { passive: false });
+        
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+
         const letters = container.current.querySelectorAll('.letter-inner');
 
         // Create an infinite timeline
@@ -44,13 +52,23 @@ const Loader = ({ onComplete }) => {
             gsap.to(container.current, {
                 autoAlpha: 0,
                 duration: 0.8,
-                onComplete: () => onComplete?.()
+                onComplete: () => {
+                    window.removeEventListener('wheel', preventDefault);
+                    window.removeEventListener('touchmove', preventDefault);
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                    onComplete?.();
+                }
             });
-        }, 8000);
+        }, 3500);
 
         return () => {
             tl.kill();
             clearTimeout(exitTimer);
+            window.removeEventListener('wheel', preventDefault);
+            window.removeEventListener('touchmove', preventDefault);
+            document.body.style.overflow = ''; 
+            document.documentElement.style.overflow = '';
         };
     }, [onComplete]);
 
